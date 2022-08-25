@@ -47,11 +47,6 @@ export default function Navbar() {
             </NavLink>
           </Box>
           <Flex minW="400px" justifyContent="space-around">
-            {/* <NavLink to="/">Home</NavLink>
-                    <NavLink to="/about-us">About Us</NavLink>
-                    <NavLink to="/shop">Shop</NavLink>
-                    <NavLink to="/categories">Categories</NavLink>
-                    <NavLink to="/contact-us">Contact Us</NavLink> */}
             {links.map((item) => (
               <NavLink key={item.id} to={item.to}>
                 <Text
@@ -69,7 +64,9 @@ export default function Navbar() {
           <Flex minW="250px" justifyContent="space-around">
             <SearchBox />
             <User />
-            <HeartIcon />
+            <NavLink to="/wishlist">
+              <HeartIcon />
+            </NavLink>
             <CartBox />
           </Flex>
         </Flex>

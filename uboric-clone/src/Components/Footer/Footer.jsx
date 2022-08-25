@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import BottomFooterPart from "./BottomFooterPart";
+import MiddleFooter from "./MiddleFooter";
 import TopSection from "./TopSection";
 
 export default function Footer() {
@@ -9,7 +10,12 @@ export default function Footer() {
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
     >
-      <TopSection />
+      <Box>
+        <TopSection />
+      </Box>
+      <Box>
+        <MiddleFooter />
+      </Box>
       <BottomFooterPart />
     </Box>
   );
