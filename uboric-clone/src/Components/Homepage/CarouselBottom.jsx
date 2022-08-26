@@ -27,8 +27,8 @@ export default function CarouselBottom() {
     <Box padding="2rem" bg="black">
       <Flex gap="2rem">
         {links.map((item) => (
-          <Box>
-            <NavLink key={item.id} to={item.to}>
+          <Box key={item.id}>
+            <NavLink to={item.to}>
               <Image h="300px" sx={{ objectFit: "contain" }} src={item.image} />
             </NavLink>
           </Box>
