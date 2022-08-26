@@ -3,7 +3,7 @@ import NewsLetterBox from "./NewsLetterBox";
 
 export default function TopSection() {
   return (
-    <Box sx={{ margin: "1rem", padding: "2rem" }}>
+    <Box sx={{ margin: "1rem 0", padding: "2rem 0" }}>
       <Flex justifyContent={"center"}>
         <Text
           sx={{
@@ -16,7 +16,9 @@ export default function TopSection() {
           Want style Ideas and Treats?
         </Text>
       </Flex>
-      <NewsLetterBox />
+      <Box sx={{ borderBottom: "1px solid #2A2B2B", paddingBottom: "2rem" }}>
+        <NewsLetterBox />
+      </Box>
     </Box>
   );
 }

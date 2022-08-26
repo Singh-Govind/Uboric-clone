@@ -23,6 +23,7 @@ export default function NewsLetterBox() {
           backgroundColor: "#535253",
           color: "white",
         }}
+        _hover={{ backgroundColor: "#535253" }}
         size="lg"
       >
         Subscribe
