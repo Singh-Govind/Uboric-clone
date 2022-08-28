@@ -5,18 +5,29 @@ import {
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   Input,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
+import { useContext } from "react";
+import { useState } from "react";
+import { AppContextMine } from "../../Context/AppContextMine";
 import SearchIcon from "../assets/Icons/SearchIcon";
 
 export default function SearchBox() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const [val, setVal] = useState("");
+
+  const { setSearchItem } = useContext(AppContextMine);
+
+  const handleSearch = () => {
+    setSearchItem(val);
+    setVal("");
+    onClose();
+  };
 
   return (
     <Box sx={{ cursor: "pointer" }}>
@@ -31,18 +42,16 @@ export default function SearchBox() {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerHeader>Search</DrawerHeader>
 
           <DrawerBody>
-            <Input placeholder="Type here..." />
+            <Input
+              value={val}
+              onChange={(e) => setVal(e.target.value)}
+              placeholder="search for items"
+            />
+            <Button onClick={handleSearch}>Search</Button>
           </DrawerBody>
-
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </Box>

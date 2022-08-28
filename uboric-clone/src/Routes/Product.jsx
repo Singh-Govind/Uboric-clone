@@ -1,10 +1,12 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 import ProductDisplay from "../Components/PagesComponents/Shop/ProductDisplay";
 
 export default function Product() {
   return (
-    <Box>
-      <ProductDisplay />
+    <Box mt="3rem">
+      <Container maxW="1200px">
+        <ProductDisplay />
+      </Container>
     </Box>
   );
 }
