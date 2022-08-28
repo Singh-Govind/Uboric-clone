@@ -12,6 +12,7 @@ import "./Carousel.css";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { Button, Image } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 export default function Carousel() {
   const products = [
@@ -78,7 +79,7 @@ export default function Carousel() {
                 transform: "scale(1.1)",
               }}
             >
-              Shop Now
+              <Link to="/shop">Shop Now</Link>
             </Button>
           </SwiperSlide>
         ))}

@@ -1,5 +1,9 @@
 import { Box, Text, Container, Flex } from "@chakra-ui/react";
+import axios from "axios";
+import { useContext, useState } from "react";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { AppContextMine } from "../../Context/AppContextMine";
 import Brand from "../assets/Brand";
 import HeartIcon from "../assets/Icons/HeartIcon";
 import CartBox from "./CartBox";
@@ -35,6 +39,24 @@ export default function Navbar() {
       title: "Contact Us",
     },
   ];
+  const [data, setData] = useState([]);
+
+  const { num } = useContext(AppContextMine);
+
+  let cartItems = 0;
+  const getCartItems = () => {
+    axios.get(`https://uboric-server.herokuapp.com/cart`).then((res) => {
+      setData(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getCartItems();
+  }, [num]);
+
+  data.forEach((item) => {
+    cartItems += +item.quantity;
+  });
 
   return (
     <Box sx={{ borderBottom: "1px solid lightgray" }}>
@@ -67,7 +89,25 @@ export default function Navbar() {
             <NavLink to="/wishlist">
               <HeartIcon />
             </NavLink>
-            <CartBox />
+            <Box position="relative">
+              <CartBox />
+              <span
+                style={{
+                  position: "absolute",
+                  top: "-12px",
+                  right: "-10px",
+                  zIndex: "10",
+                  background: "red",
+                  padding: "0px 7px",
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "14px",
+                  borderRadius: "50%",
+                }}
+              >
+                {cartItems}
+              </span>
+            </Box>
           </Flex>
         </Flex>
       </Container>
